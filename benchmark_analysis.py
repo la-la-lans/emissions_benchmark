@@ -7,10 +7,10 @@ import matplotlib as mpl
 import numpy as np
 
 # Configure matplotlib to display Traditional Chinese characters
-zh_font_path = fm.findfont("Microsoft JhengHei", fallback_to_default=False)
-if zh_font_path:
+try:
+    zh_font_path = fm.findfont("Microsoft JhengHei", fallback_to_default=False)
     plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
-else:
+except Exception:
     # Fallback fonts
     plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'SimHei', 'sans-serif']
 
