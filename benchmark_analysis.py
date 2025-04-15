@@ -1,14 +1,20 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import seaborn as sns
 import matplotlib as mpl
 import numpy as np
 
 # Configure matplotlib to display Traditional Chinese characters
-plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei', 'Arial Unicode MS', 'SimHei']
+zh_font_path = fm.findfont("Microsoft JhengHei", fallback_to_default=False)
+if zh_font_path:
+    plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+else:
+    # Fallback fonts
+    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'SimHei', 'sans-serif']
+
 plt.rcParams['axes.unicode_minus'] = False
-mpl.rcParams['font.family'] = 'sans-serif'
 
 def calculate_percentiles(data, value):
     """
